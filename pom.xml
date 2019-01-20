@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+            <dependencies>
+
+                    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+                    <dependency>
+                        <groupId>org.seleniumhq.selenium</groupId>
+                        <artifactId>selenium-java</artifactId>
+                        <version>2.53.1</version>
+                    </dependency>
+
+                 <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+                <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>6.8.8</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <!--选中testNG.xml执行测试套件时，可能会碰到ElementTravelsal找不到的问题-->
+                <dependency>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                    <version>1.4.01</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>6.8.8</version>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/dom4j/dom4j 这个是解析xml用的-->
+                <dependency>
+                    <groupId>dom4j</groupId>
+                    <artifactId>dom4j</artifactId>
+                    <version>1.6.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-api</artifactId>
+                    <version>2.53.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-api</artifactId>
+                    <version>2.53.1</version>
+                </dependency>
+
+                <!--日志-->
+                <dependency>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                    <version>1.2.17</version>
+                </dependency>
+
+                <!-- POI提供API给JAVA程序对Microsoft Office格式档案读和写的功能 -->
+                <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+                <dependency>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi-ooxml</artifactId>
+                    <version>3.15</version>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin 测试报告管理 -->
+                <dependency>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/org.uncommons/reportng 渲染报表，可以部署到HTML，可以渲染到Excel-->
+                <dependency>
+                    <groupId>org.uncommons</groupId>
+                    <artifactId>reportng</artifactId>
+                    <version>1.1.4</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/com.google.inject/guice 为了解决reportNG报错所用的库-->
+                <dependency>
+                    <groupId>com.google.inject</groupId>
+                    <artifactId>guice</artifactId>
+                    <version>3.0</version>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/junit/junit 用来进行单元测试-->
+                <dependency>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                    <version>4.12</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                    <version>4.8.1</version>
+                </dependency>
+
+
+            </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- 实现方式：集成maven的surefire插件, Surefire插件用于Maven项目的test阶段，以执行单元测试。 集成后我们就可以通过maven命令
+                maven test 来调动脚本执行了。 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
+                    </systemPropertyVariables>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -Dfile.encoding=UTF-8
+                    </argLine>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+
+
+        </plugins>
+
+    </build>
+
+    <groupId>com.lemon</groupId>
+    <artifactId>webAuto</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+</project>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="false" preserve-order="true">
+    <test name="login_test">
+        <classes>
+
+            <!--<class name ="com.lemon.web.auto.testCase.login_Test_Case"/>-->
+            <class name ="com.lemon.web.auto.testCase.Register_Test_Case"/>
+
+        </classes>
+    </test>
+    <!-- 浏览器的类型配置 -->
+    <parameter name="broswerType" value="Chrome"></parameter>
+    <!-- selenium的版本配置 -->
+    <parameter name="seleniumVersion" value="2.x"></parameter>
+    <!-- 可执行浏览器的驱动路径 -->
+    <parameter name="driverExepath" value="src/main/resources/chromedriver.exe"></parameter>
+
+    <!--监听器-->
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+        <listener class-name="com.lemon.web.auto.util.ScreenShotListener"></listener>
+    </listeners>
+</suite>
